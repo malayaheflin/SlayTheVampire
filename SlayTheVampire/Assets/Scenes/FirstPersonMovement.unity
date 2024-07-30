@@ -2158,7 +2158,7 @@ GameObject:
   - component: {fileID: 1504143132}
   - component: {fileID: 1504143131}
   - component: {fileID: 1504143134}
-  - component: {fileID: 1504143133}
+  - component: {fileID: 1504143135}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2233,26 +2233,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504143129}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1504143133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1504143129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1503383454a57784caa9b3c07204922d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 1504143134}
-  speed: 8
-  gravity: -9.81
-  groundCheck: {fileID: 1900178530}
-  groundDistance: 0.4
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!143 &1504143134
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2279,6 +2259,26 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1504143135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504143129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1503383454a57784caa9b3c07204922d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 12
+  gravity: -9.81
+  groundCheck: {fileID: 1900178530}
+  groundDistance: 0.4
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
+  jumpHeight: 1.2
 --- !u!1 &1596512718
 GameObject:
   m_ObjectHideFlags: 0
