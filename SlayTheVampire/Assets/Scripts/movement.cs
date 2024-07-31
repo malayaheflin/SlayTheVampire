@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class movement : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     // eventually add animators & sound here too
 
@@ -21,6 +21,7 @@ public class movement : MonoBehaviour
 
     CharacterController controller;
     bool isGrounded;
+    private Combat combat; // require component
 
 
     Vector3 velocity;
@@ -35,6 +36,8 @@ public class movement : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        combat = GetComponent<Combat>();
     }
 
     void Update()
@@ -70,6 +73,7 @@ public class movement : MonoBehaviour
     void AssignInputs()
     {
         input.Jump.performed += ctx => Jump();
+        input.Attack.performed += ctx => combat.Attack();
     }
 
     void Jump()
