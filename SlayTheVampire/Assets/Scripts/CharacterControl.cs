@@ -1,28 +1,18 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Utilities;
 
-public class Movement : MonoBehaviour
+public class CharacterControl : MonoBehaviour
 {
     // eventually add animators & sound here too
 
     public float speed = 12f;
-    public float gravity = -9.81f;
+    public float gravity = -30f;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     public float jumpHeight = 1.2f;
-
-    PlayerInput playerInput;
-    PlayerInput.MainActions input;
-
+    public KeyCode jumpKey = KeyCode.Space;
     CharacterController controller;
     bool isGrounded;
-    private Combat combat; // require component
-
 
     Vector3 velocity;
 
@@ -30,14 +20,8 @@ public class Movement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
 
-        playerInput = new PlayerInput();
-        input = playerInput.Main;
-        AssignInputs();
-
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-        combat = GetComponent<Combat>();
     }
 
     void Update()
@@ -58,22 +42,9 @@ public class Movement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
-    }
 
-    void OnEnable()
-    {
-        input.Enable();
-    }
-    void OnDisable()
-    {
-        input.Disable();
-    }
-
-    // for action mapping (input system package)
-    void AssignInputs()
-    {
-        input.Jump.performed += ctx => Jump();
-        input.Attack.performed += ctx => combat.Attack();
+        if(Input.GetKeyDown(jumpKey))
+            Jump();
     }
 
     void Jump()
@@ -81,5 +52,4 @@ public class Movement : MonoBehaviour
         if (isGrounded)
             velocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
     }
-
 }

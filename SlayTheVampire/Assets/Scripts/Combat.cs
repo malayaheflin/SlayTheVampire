@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Combat : MonoBehaviour
@@ -10,9 +8,14 @@ public class Combat : MonoBehaviour
     public int attackDamage = 1;
     public LayerMask attackLayer;
     public Camera cam; // get automatically ?
-
     bool attacking = false;
     bool readyToAttack = true;
+
+    public void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+            Attack();
+    }
 
     public void Attack()
     {
@@ -36,10 +39,10 @@ public class Combat : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
         {
             Debug.Log("attacked");
-            // if (hit.transform.TryGetComponent<Enemy>(out Enemy E))
-            // {
-            //     E.TakeDamage(attackDamage);
-            // }
+            if (hit.transform.TryGetComponent<Health>(out Health E))
+            {
+                 E.takeHits(attackDamage);
+            }
         }
     }
 }
