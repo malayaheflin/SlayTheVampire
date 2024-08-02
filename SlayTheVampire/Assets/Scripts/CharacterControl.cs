@@ -1,17 +1,29 @@
 using UnityEngine;
 
-public class movement : MonoBehaviour
+public class CharacterControl : MonoBehaviour
 {
-    public CharacterController controller;
+    // eventually add animators & sound here too
+
     public float speed = 12f;
-    public float gravity = -9.81f;
+    public float gravity = -30f;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+    public float jumpHeight = 1.2f;
+    public KeyCode jumpKey = KeyCode.Space;
+    CharacterController controller;
     bool isGrounded;
 
     Vector3 velocity;
-    // Update is called once per frame
+
+    void Awake()
+    {
+        controller = GetComponent<CharacterController>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -30,6 +42,14 @@ public class movement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+
+        if(Input.GetKeyDown(jumpKey))
+            Jump();
     }
 
+    void Jump()
+    {
+        if (isGrounded)
+            velocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+    }
 }
