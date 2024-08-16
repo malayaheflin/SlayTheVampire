@@ -20,6 +20,9 @@ Throughout the journey, the player can aquire new weapons by finding them or fro
 
 There will be minor enemies in the form of vampire thralls. They will vary in difficulty as you get deeper into the castle.
 
+#### Combat
+Combat will be first person melee/shooter. The player can switch between using a sword and a gun. Each enemy, and the player, will have both health  and poise. The player can also dash, to quickly dodge, retreat, or close distance to enemies. Upon breaking poise, the player can perform a finisher on the enemy. The benefit to doing this is that the player's stamina bar will fully regen upon performing a finisher, allowing them to continue to dash. However, in order to perform a finisher, the player must use the weapon that was not used to break poise in the first place. For example, if the player shoots an enemy to break poise, they must use the sword to finish, and vice versa.
+
 #### Final Boss Fight
 
 The final boss fight will consist of the player having to double task between fighting the vampire and making the holy water. The fight is won when the player can successfully make the water and try to douse the vampire in it. 
