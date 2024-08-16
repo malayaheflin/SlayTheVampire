@@ -28,6 +28,8 @@ public class CharacterControl : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
 
+        gravity = -30f;
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
